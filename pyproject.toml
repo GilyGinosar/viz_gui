@@ -1,0 +1,15 @@
+[project]
+name = "viz-gui"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "decord>=0.6.0",
+    "fastplotlib>=0.6.1",
+    "glfw>=2.10.0",
+    "ipywidgets>=8.1.8",
+    "numpy>=2.3.5",
+    "opencv-python>=4.11.0.86",
+    "scipy>=1.16.3",
+    "soundfile>=0.13.1",
+]
