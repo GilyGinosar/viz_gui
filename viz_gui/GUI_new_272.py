@@ -15,14 +15,10 @@ import os
 
 
 # ==== Choose ====
-exp_num = 237
-file_num = 15
-
-channel_numbers = [2,0,4,5]
-
-base_path_audio = fr"\\sanesstorage.cns.nyu.edu\archive\ginosar\Raw_data\experiment_{exp_num}\concatenated_data_cam_mic_sync\wavs"
-base_path_video = fr"\\sanesstorage.cns.nyu.edu\archive\ginosar\Raw_data\experiment_{exp_num}\concatenated_data_cam_mic_sync"
-
+exp_num = 272
+file_num = 210
+#channel_numbers = [1, 0, 4, 5]  # Choose 4 channels   [2,0,4,5]
+channel_numbers = [4 ,2, 1, 0]  # Choose 4 channels   [2,0,4,5]
 
 spec_height = 300
 spec_width = 1500
@@ -102,27 +98,29 @@ def get_spect_window(ev):
 
 # === Video file naming rule based on channel number ===
 video_prefix_map = {
-    0: "video_center_",
-    1: "video_center_",
-    2: "video_gily_center_", # change back
-    3: "video_gily_center_", # change back
-    4: "video_nest_top_",     # "video_nest_top_", video_nest_side_
-    5: "video_burrow_side_" #"video_burrow_top_" video_burrow_side_
+    2: "video_center_",
+    3: "video_center_",
+    4: "video_gily_center_", # change back
+    5: "video_gily_center_", # change back
+    0: "video_nest_top_",     # "video_nest_top_", video_nest_side_
+    1: "video_burrow_side_" #"video_burrow_top_" video_burrow_side_
 }
 
 # maps int -> location
 name_mapping = {
-    0: "center-1",
-    1: "center-1", #1
-    2: "center-2",
-    3: "center-2",
-    4: "nest",
-    5: "burrow"
+    2: "center-1",
+    3: "center-1", #1
+    4: "center-2",
+    5: "center-2",
+    0: "nest",
+    1: "burrow"
 }
 
 #location_order = ["center-2","center-1", "burrow", "nest"] # ["center-2", "center-1", "burrow", "nest"]
 location_order =  ["center-2", "center-1", "burrow", "nest"]
 
+base_path_audio = fr"\\sanesstorage.cns.nyu.edu\archive\ginosar\Raw_data\experiment_{exp_num}\concatenated_data_cam_mic_sync\wavs"
+base_path_video = fr"\\sanesstorage.cns.nyu.edu\archive\ginosar\Raw_data\experiment_{exp_num}\concatenated_data_cam_mic_sync"
 
 # === spectrogram variables ===
 fps_audio = 125000
@@ -140,7 +138,7 @@ num_bins_window = compute_bins_for_window(fps_audio, n_samples_bin, n_samples_ov
 video_paths: dict[str, str] = dict()
 audio_paths: dict[str, str] = dict()
 
-file_num_str_tmp = f"{file_num:0d}"
+file_num_str_tmp = f"{file_num:03d}"
 
 file_num_str = f"{file_num:03d}"
 print(file_num_str_tmp)
